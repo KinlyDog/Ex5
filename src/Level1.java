@@ -1,15 +1,14 @@
 public class Level1 {
     public static String BigMinus(String s1, String s2) {
-        int len;
-
-        if (s1.length() >= s2.length()) {
-            len = s1.length();
-        } else {
-            len = s2.length();
-        }
-
         int s1len = s1.length();
         int s2len = s2.length();
+        int len;
+
+        if (s1len >= s2len) {
+            len = s1len;
+        } else {
+            len = s2len;
+        }
 
         int[] tmp1 = new int[len];
         int[] tmp2 = new int[len];
@@ -73,5 +72,4 @@ public class Level1 {
 
         return bld.toString();
     }
-
 }
