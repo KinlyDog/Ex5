@@ -10,39 +10,39 @@ public class Level1 {
             len = s2len;
         }
 
-        int[] tmp1 = new int[len];
-        int[] tmp2 = new int[len];
+        int[] arrayInteger1 = new int[len];
+        int[] arrayInteger2 = new int[len];
 
         int[] min = new int[len];
         int[] max = new int[len];
 
         for (int i = 0; i < s1len; i++) {
-            tmp1[i] = s1.charAt(s1len - 1 - i) - '0';
+            arrayInteger1[i] = s1.charAt(s1len - 1 - i) - '0';
         }
 
         for (int i = 0; i < s2len; i++) {
-            tmp2[i] = s2.charAt(s2len - 1 - i) - '0';
+            arrayInteger2[i] = s2.charAt(s2len - 1 - i) - '0';
         }
 
         if (s1len > s2len) {
-            min = tmp2;
-            max = tmp1;
+            min = arrayInteger2;
+            max = arrayInteger1;
         } else if (s1len < s2len) {
-            min = tmp1;
-            max = tmp2;
+            min = arrayInteger1;
+            max = arrayInteger2;
         }
 
         int x = s1len - 1;
         while (s1len == s2len) {
-            if (tmp1[x] == tmp2[x]) {
+            if (arrayInteger1[x] == arrayInteger2[x]) {
                 x--;
-            } else if (tmp1[x] > tmp2[x]) {
-                max = tmp1;
-                min = tmp2;
+            } else if (arrayInteger1[x] > arrayInteger2[x]) {
+                max = arrayInteger1;
+                min = arrayInteger2;
                 break;
             } else {
-                max = tmp2;
-                min = tmp1;
+                max = arrayInteger2;
+                min = arrayInteger1;
                 break;
             }
 
