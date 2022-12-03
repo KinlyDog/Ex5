@@ -2,19 +2,19 @@ public class Level1 {
     public static String BigMinus(String s1, String s2) {
         int s1len = s1.length();
         int s2len = s2.length();
-        int len;
+        int maxNumLen;
 
         if (s1len >= s2len) {
-            len = s1len;
+            maxNumLen = s1len;
         } else {
-            len = s2len;
+            maxNumLen = s2len;
         }
 
-        int[] arrayInteger1 = new int[len];
-        int[] arrayInteger2 = new int[len];
+        int[] arrayInteger1 = new int[maxNumLen];
+        int[] arrayInteger2 = new int[maxNumLen];
 
-        int[] min = new int[len];
-        int[] max = new int[len];
+        int[] smallerNumber = new int[maxNumLen];
+        int[] biggerNumber = new int[maxNumLen];
 
         for (int i = 0; i < s1len; i++) {
             arrayInteger1[i] = s1.charAt(s1len - 1 - i) - '0';
@@ -25,11 +25,11 @@ public class Level1 {
         }
 
         if (s1len > s2len) {
-            min = arrayInteger2;
-            max = arrayInteger1;
+            smallerNumber = arrayInteger2;
+            biggerNumber = arrayInteger1;
         } else if (s1len < s2len) {
-            min = arrayInteger1;
-            max = arrayInteger2;
+            smallerNumber = arrayInteger1;
+            biggerNumber = arrayInteger2;
         }
 
         int x = s1len - 1;
@@ -37,12 +37,12 @@ public class Level1 {
             if (arrayInteger1[x] == arrayInteger2[x]) {
                 x--;
             } else if (arrayInteger1[x] > arrayInteger2[x]) {
-                max = arrayInteger1;
-                min = arrayInteger2;
+                biggerNumber = arrayInteger1;
+                smallerNumber = arrayInteger2;
                 break;
             } else {
-                max = arrayInteger2;
-                min = arrayInteger1;
+                biggerNumber = arrayInteger2;
+                smallerNumber = arrayInteger1;
                 break;
             }
 
@@ -51,23 +51,23 @@ public class Level1 {
             }
         }
 
-        for (int i = 0; i < len; i++) {
-            if (max[i] < min[i]) {
-                max[i] += 10;
-                max[i + 1]--;
+        for (int i = 0; i < maxNumLen; i++) {
+            if (biggerNumber[i] < smallerNumber[i]) {
+                biggerNumber[i] += 10;
+                biggerNumber[i + 1]--;
             }
 
-            max[i] -= min[i];
+            biggerNumber[i] -= smallerNumber[i];
         }
 
         int y = 0;
-        while (max[len - 1 - y] == 0) {
+        while (biggerNumber[maxNumLen - 1 - y] == 0) {
             y++;
         }
 
         StringBuilder bld = new StringBuilder();
-        for (int i = len - 1 - y; i >= 0; i--) {
-            bld.append(max[i]);
+        for (int i = maxNumLen - 1 - y; i >= 0; i--) {
+            bld.append(biggerNumber[i]);
         }
 
         return bld.toString();
