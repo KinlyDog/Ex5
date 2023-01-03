@@ -51,9 +51,6 @@ public class Level1 {
             }
         }
 
-        arrayInteger1 = null;
-        arrayInteger2 = null;
-
         for (int i = 0; i < MAX_LENGTH; i++) {
             if (biggerNumber[i] < smallerNumber[i]) {
                 biggerNumber[i] += 10;
@@ -62,7 +59,6 @@ public class Level1 {
 
             biggerNumber[i] -= smallerNumber[i];
         }
-        smallerNumber = null;
 
         int y = 0;
         while (biggerNumber[MAX_LENGTH - 1 - y] == 0) {
@@ -73,7 +69,6 @@ public class Level1 {
         for (int i = MAX_LENGTH - 1 - y; i >= 0; i--) {
             bld.append(biggerNumber[i]);
         }
-        biggerNumber = null;
 
         return bld.toString();
     }
